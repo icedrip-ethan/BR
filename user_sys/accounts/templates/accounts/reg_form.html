@@ -1,11 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container-fluid">
-	<h1> Register </h1>
-	<form method='post'>
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type='submit'> Submit </button>
-	</form>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-4">
+    	<h1> Register </h1>
+    	<form method='post'>
+    		{% csrf_token %}
+        <div class="form-group" style="max-width: 500px;">
+
+          <label class="control-label" for="username">username:</label>
+          <input type="text" class="form-control" id="form-control" name="username">
+          <br>
+
+          <label class="control-label" for="email">email address<span style="color:gray;">(optional)</span>:</label>
+          <input type="text" class="form-control" id="form-control" name="email">
+          <br>
+
+          <label class="control-label" for="password1">password:</label>
+          <input type="password" class="form-control" id="form-control" name="password1">
+          <br>
+
+          <label class="control-label" for="password2">password <span style="color: gray;">(confirm)</span>:</label>
+          <input type="password" class="form-control" id="form-control" name="password2">
+          <br>
+          <button class='btn btn-primary' type='submit'>Save</button>
+        </div>
+    	</form>
+      {% if messages %}
+        {% for message in messages %}
+          <p{% if message.tags %} class="{{ message.tags }}"{% endif %} style="font-size: 15pt;color: red;">{{message}}</p>
+        {% endfor %}
+      {% endif %}
+    <div>
+  </div>
 </div>
+
 {% endblock %}

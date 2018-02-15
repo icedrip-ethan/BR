@@ -2,11 +2,48 @@
 
 {% block content %}
 <div class='container-fluid'>
-	<h2> Edit Profile </h2>
+  <h2> change your password</h2>
   <form method ='post'>
     {% csrf_token %}
-    {{form.as_p}}
-    <button type='submit'>Submit</button>
+    <div class="form-group" style="max-width: 500px;">
+
+      <label class="control-label" for="old_password">Old Password:</label>
+      <input type="password" class="form-control" id="form-control" name="old_password">
+      <br>
+
+      <label class="control-label" for="new_password1">New Password:</label>
+      <input type="password" class="form-control" id="form-control" name="new_password1">
+      <br>
+
+      <label class="control-label" for="new_password2">New Password <span style="color: gray;">(confirm)</span>:</label>
+      <input type="password" class="form-control" id="form-control" name="new_password2">
+      <br>
+      <button class='btn btn-primary' type='submit'>Save</button>
+    </div>
   </form>
+
+	<h2> update your email </h2>
+  <form method ='post'>
+    {% csrf_token %}
+    <div class="form-group" style="max-width: 500px;">
+      {% if user.email %}
+      <h6> current: {{user.email}} </h6>
+      <label class="control-label" for="email">Email:</label>
+      <input type="text" class="form-control" id="form-control" name="email">
+      {% else %}
+      <label class="control-label" for="email">Email:<span style="color: gray;"> (not set)</span></label>
+      <input type="text" class="form-control" id="form-control" name="email">
+      {% endif %}
+      <br>
+
+      <label class="control-label" for="password">Password:</label>
+      <input type="password" class="form-control" id="form-control" name="password">
+      <br>
+
+      <button class='btn btn-primary' type='submit'>Save</button>
+    </div>
+  <br>
+  <button type="button" class="btn btn-danger">Deactivate Account</button>
 </div>
+
 {% endblock %}

@@ -2,14 +2,9 @@
 
 {% block content %}
 <div class="container-fluid">
-	<p>Name: 
-	{{ user.first_name }}
-	{{ user.last_name }}
-	<br>Email: 
-	{{ user.email }}
-	</p>
-	<a href='/account/change-password'>
-	<button type="button" class="btn btn-default">Change Password</button> 
-	</a>
+	<p>Username: {{ user }} </p>
+  <!-- {% if user.email %}
+	<p>Email: {{ user.email }}</p>
+  {% endif %} -->
 </div>
 {% endblock %}

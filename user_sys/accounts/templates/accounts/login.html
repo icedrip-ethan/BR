@@ -1,15 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
-	<h1> Welcome </h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-4">
+    	<h1>Login</h1>
+    	<form method='post'>
+    		{% csrf_token %}
+        <div class="form-group" style="max-width: 500px;">
 
-	<h2>Login</h2>
-	<form method='post'>
-		{% csrf_token %}
-		{{form.as_p}}
-		<button type='submit'>Login</button>
-	</form>
-	<br>
-	<p><a href='/account/reset-password/'>Forgot password?</a></p>
+          <label class="control-label" for="username">username:</label>
+          <input type="text" class="form-control" id="form-control" name="username">
+          <br>
+
+          <label class="control-label" for="password">password:</label>
+          <input type="password" class="form-control" id="form-control" name="password">
+          <br>
+
+          <button class='btn btn-primary' type='submit'>Login</button>
+        </div>
+    	</form>
+    	<br>
+    	<p><a href='/account/reset-password/'>Forgot password?</a></p>
+    </div>
+  </div>
 </div>
 {% endblock %}
